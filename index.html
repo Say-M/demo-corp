@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="./assets/css/styles.min.css" />
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script src="./assets/js/main.js" defer></script>
+  </head>
+  <body>
+    <main class="login-page">
+      <div class="container">
+        <div class="login-wrapper">
+          <div class="left">
+            <h1>Company</h1>
+          </div>
+          <div class="right">
+            <div class="tab">
+              <ul class="tabs">
+                <li class="active tab-item" data-target="id">
+                  Login with
+                  <br />
+                  12iD
+                </li>
+                <li class="tab-item" data-target="customer">
+                  Became a
+                  <br />
+                  Customer
+                </li>
+                <li class="tab-item" data-target="credentials">
+                  Login with
+                  <br />
+                  Credentials
+                </li>
+              </ul>
+              <div class="tab-content">
+                <div id="id" class="active">
+                  <div class="tab-1">
+                    <ul>
+                      <li>Scan QR code with your 12iD app.</li>
+                      <li>(For registered customers)</li>
+                      <li>
+                        <p>QR code expires in:</p>
+                        <span class="timer" id="timer">02:00</span>
+                      </li>
+                    </ul>
+                    <div>
+                      <div id="id-qrcode" class="qrcode"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="customer">
+                  <div class="tab-2">
+                    <ul>
+                      <li>
+                        Become a customer of Demo Corp by following an easy
+                        step-by-step process in 12iD mobile application for
+                        Android and iOS.
+                      </li>
+                      <li>
+                        12iD digital identity allows you to protect your account
+                        and uniquely verify your identity, while not storing or
+                        sharing any sensitive data.
+                      </li>
+                    </ul>
+                    <div>
+                      <div id="customer-qrcode" class="qrcode"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="credentials">
+                  <div class="tab-3">
+                    <p>
+                      Sign in with your email or digital identity to continue
+                    </p>
+                    <form action="">
+                      <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" />
+                      </div>
+                      <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" />
+                      </div>
+                      <div class="alert error">
+                        <p>Invalid credentials. Please try again.</p>
+                      </div>
+                      <button class="btn btn-theme" style="width: 100%">
+                        Login
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
