@@ -1,20 +1,26 @@
-// ! generate qr code
-new QRCode(document.getElementById('id-qrcode'), {
-  text: 'Hello world',
+let idQrcode = new QRCode('id-qrcode', {
   width: 200,
   height: 200,
   colorDark: '#000000',
   colorLight: '#ffffff',
   correctLevel: QRCode.CorrectLevel.H,
 })
-new QRCode(document.getElementById('customer-qrcode'), {
-  text: 'Hello world',
+let customerQrcode = new QRCode('customer-qrcode', {
   width: 200,
   height: 200,
   colorDark: '#000000',
   colorLight: '#ffffff',
   correctLevel: QRCode.CorrectLevel.H,
 })
+// ! api call
+const generateQR = async (id) => {
+  const random = Math.floor(Math.random() * 500) + 1
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${random}`)
+  const data = await response.json()
+  id === 'id-qrcode'
+    ? idQrcode.makeCode(data?.abilities?.[0]?.ability?.name)
+    : customerQrcode.makeCode(data?.abilities?.[0]?.ability?.name)
+}
 
 // ! timer functionalities
 const timerElement = document.querySelector('#timer')
@@ -34,11 +40,17 @@ const startTimer = (duration, ele) => {
     ele.textContent = minutes + ':' + seconds
 
     if (--timer < 0) {
+      generateQR('id-qrcode')
       timer = duration
     }
   }, 1000)
 }
-startTimer(59.5 * 2, timerElement)
+let first = false
+if (!first) {
+  generateQR('id-qrcode')
+  startTimer(3, timerElement)
+  first = true
+}
 
 // ! tab functionalities
 const tabItems = document.querySelectorAll('.tab-item')
@@ -59,6 +71,9 @@ tabItems.forEach((item) => {
       startTimer(60 * 2, timerElement)
     } else {
       clearInterval(interval)
+    }
+    if (target !== 'credentials') {
+      generateQR(target === 'id' ? 'id-qrcode' : 'customer-qrcode')
     }
   })
 })
