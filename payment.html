@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="./assets/css/styles.min.css" />
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script src="./assets/js/main.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+  </head>
+  <body>
+    <main class="login-page">
+      <div id="paymentModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div>
+              <h2>Verify Your Identity</h2>
+            </div>
+            <span class="close" data-dismiss="modal" data-target="#paymentModal"
+              >&times;</span
+            >
+          </div>
+          <div class="modal-body">
+            <div class="payment-qr">
+              <p>QR code expires in:</p>
+              <span class="timer" id="timer-payment-qrcode">02:00</span>
+              <div>
+                <div id="payment-qrcode" class="qrcode"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="login-wrapper" style="justify-content: center">
+          <!-- <div class="left">
+            <h1>IFIC Bank PLC</h1>
+          </div> -->
+          <div class="right">
+            <div class="tab">
+              <ul class="tabs">
+                <li class="active tab-item" data-target="payment">
+                  Make payment with IFIC Bank PLC
+                </li>
+              </ul>
+              <div class="tab-content">
+                <div id="payment" class="active">
+                  <div class="tab-1">
+                    <form action="#">
+                      <input type="text" />
+                      <button
+                        type="button"
+                        class="btn w-full"
+                        data-toggle="modal"
+                        data-target="#paymentModal"
+                      >
+                        Make Payment
+                      </button>
+                      <div
+                        id="payment-alert"
+                        class="alert success"
+                        style="display: none"
+                      >
+                        <p>
+                          <strong>Success!</strong> Your payment is successful.
+                        </p>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
